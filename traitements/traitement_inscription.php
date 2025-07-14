@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $genre = $_POST["genre"];
     $email = $_POST["email"];
     $ville = $_POST["ville"];
-    $mdp = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
+    $mdp = $_POST["mdp"];
 
     $conn = dbconnect();
 
@@ -33,14 +33,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>

@@ -1,5 +1,5 @@
 <?php
-
+require_once("../inc/connect.php");
 function emailExiste($email, $conn) {
     $sql = "SELECT * FROM exam2_membre WHERE email = ?";
     $stmt = mysqli_prepare($conn, $sql);
@@ -23,10 +23,26 @@ function verifierConnexion($email, $mdp, $conn) {
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     if ($row = mysqli_fetch_assoc($result)) {
-        if (password_verify($mdp, $row["mdp"])) {
+        if ( $mdp==$row['mdp']) {
             return $row;
         }
     }
     return false;
 }
+
+
+// requete -> table :
+ function getRequestTab($request) {
+    $conn=dbconnect();
+    if (!$request) {
+        die('Erreur SQL : ' . mysqli_error($conn));
+    }
+    while ($row = mysqli_fetch_assoc($request)) {
+        $tab[] = $row;
+    }
+   // je ne sais pas comment utiliser mysqli_close($conn);
+    return $tab;
+}
+
+function getemp
 ?>
