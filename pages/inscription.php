@@ -9,8 +9,10 @@ error_reporting(E_ALL);
     <meta charset="UTF-8">
     <title>Inscription</title>
     <link rel="stylesheet" href="../asset/bootstrap.min.css">
+    <link rel="stylesheet" href="../asset/syle.css">
 </head>
 <body>
+<?php include("../inc/navbar.php"); ?>
 <div class="container mt-5">
     <h2>Inscription</h2>
     <?php if (isset($_GET['erreur']) && $_GET['erreur'] == 'email'): ?>

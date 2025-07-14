@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($user_mdp) {
         $_SESSION["id_membre"] = $user["id_membre"];
         $_SESSION["nom"] = $user["nom"];
-        header("Location: ../pages/accueil.php");
+        header("Location: ../pages/categorie.php");
         exit;
     } else {
         header("Location: ../pages/login.php?erreur=1");

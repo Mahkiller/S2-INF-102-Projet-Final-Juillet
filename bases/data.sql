@@ -113,15 +113,20 @@ INSERT INTO exam2_objet (nom_objet , id_categorie, id_membre) VALUES
 ('Brosse à cheveux',1,4),
 ('Perceuse-visseuse',2,4);
 
---10 emprunts
+-- 10 emprunts, un par objet, avec une date de retour différente
 INSERT INTO exam2_emprunt (id_objet, id_membre, date_emprunt, date_retour) VALUES
-(1, 2, '2025-07-01', '2025-07-07'),    -- Objet d'Andri, emprunté par Nomena
-(12, 1, '2025-07-02', '2025-07-09'),   -- Objet de Nomena, emprunté par Andri
-(23, 4, '2025-07-03', '2025-07-10'),   -- Objet de Fitia, emprunté par Dera
-(35, 1, '2025-07-04', '2025-07-11'),   -- Objet de Dera, emprunté par Andri
-(6, 3, '2025-07-05', '2025-07-12'),    -- Objet d'Andri, emprunté par Fitia
-(14, 3, '2025-07-06', '2025-07-13'),   -- Objet de Nomena, emprunté par Fitia
-(26, 2, '2025-07-07', '2025-07-14'),   -- Objet de Fitia, emprunté par Nomena
-(32, 1, '2025-07-08', '2025-07-15'),   -- Objet de Dera, emprunté par Andri
-(9, 4, '2025-07-09', '2025-07-16'),    -- Objet d'Andri, emprunté par Dera
-(18, 1, '2025-07-10', '2025-07-17');   -- Objet de Nomena, emprunté par Andri
+(1, 2, '2025-07-01', '2025-07-11'),
+(2, 3, '2025-07-02', '2025-07-12'),
+(3, 4, '2025-07-03', '2025-07-13'),
+(4, 1, '2025-07-04', '2025-07-14'),
+(5, 2, '2025-07-05', '2025-07-15'),
+(6, 3, '2025-07-06', '2025-07-16'),
+(7, 4, '2025-07-07', '2025-07-17'),
+(8, 1, '2025-07-08', '2025-07-18'),
+(9, 2, '2025-07-09', '2025-07-19'),
+(10, 3, '2025-07-10', '2025-07-20');
+
+INSERT INTO exam2_emprunt (id_objet, id_membre, date_emprunt, date_retour)
+    SELECT o.id_objet, o.id_membre, '2025-07-10', '2025-07-20'
+    FROM exam2_objet o
+    WHERE o.id_objet NOT IN (SELECT id_objet FROM exam2_emprunt);
